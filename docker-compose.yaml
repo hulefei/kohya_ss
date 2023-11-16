@@ -3,8 +3,8 @@ services:
   kohya-ss-gui:
     container_name: kohya-ss-gui
     image: hulefei/kohya-ss-gui:latest
-    # build:
-    #   context: .
+    build:
+      context: .
     ports:
       # - 127.0.0.1:3000:3000
       - 7863:7860
