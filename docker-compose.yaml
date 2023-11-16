@@ -2,12 +2,12 @@ version: "3.8"
 services:
   kohya-ss-gui:
     container_name: kohya-ss-gui
-    image: kohya-ss-gui:latest
-    build:
-      context: .
+    image: hulefei/kohya-ss-gui:latest
+    # build:
+    #   context: .
     ports:
-      - 127.0.0.1:3000:3000
-      - 7860:7860
+      # - 127.0.0.1:3000:3000
+      - 7863:7860
       - 6006:6006
     tty: true
     ipc: host
@@ -19,6 +19,8 @@ services:
       - /tmp      
     volumes:
       - ./dataset:/dataset
+      - ./output:/output
+      - ./models:/models
       - ./.cache/user:/home/appuser/.cache
       - ./.cache/triton:/home/appuser/.triton    
       - ./.cache/config:/app/appuser/.config
@@ -31,3 +33,4 @@ services:
           devices:
             - driver: nvidia
               device_ids: ['all']
+              capabilities: [gpu]
